@@ -11,6 +11,7 @@
 - You can get the top **n** unversities of any **country** based on specific **ranking column**.
 
 ## Installations are requirements :
+- You need to have node installed on your system [https://nodejs.org/en/download]
 - You need to install npm module and all the dependencies present in the package.json.
   ```
   npm install --save
