@@ -1,16 +1,21 @@
-const mongoose=require("./config/config")
 const { Command } = require("commander");
-const dataImportFunction=require("./controllers/importData")
+const query=require("./controllers/queries")
+const dataImportFunction = require("./controllers/importData");
 const program = new Command();
 program
   .version("1.0.0")
   .description("University Ranking details")
-  .option("-i,--imp <path>", "Importing the data")
+  .option("-i, --imp <path>", "Importing the data")
+  .option("-q,--query <param...>")
   .parse(process.argv);
-  const options = program.opts();
-  if (options.imp) {
-    console.log(options)
-    var path = options.imp
-    console.log(path)
- dataImportFunction(path);
-    }
+const options = program.opts();
+if (options.imp) {
+  var path = options.imp
+  dataImportFunction(path);
+}
+if(options.query){
+  const columnName=options.query[0]
+  const limit=parseInt(options.query[1])
+  const country=options.query[2]
+  query(columnName,limit,country);
+}
