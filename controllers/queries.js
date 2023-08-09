@@ -6,8 +6,8 @@ const query = async (columnName, limit, country) => {
     .sort({ [columnName]: 1 })
     .select({ "Institution Name": 1, [columnName]: 1, country: 1 })
     .limit(limit);
-    console.log("C",columnName,"c",limit,country)
   console.log(getTopUniversities);
-  mongoose.connection.close()
+  mongoose.connection.close();
+  console.log("Connection closed successfully");
 };
-module.exports=query
+module.exports = query;
