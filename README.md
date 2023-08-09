@@ -9,7 +9,7 @@
 - The data set have been downloaded from the kaggle website.
 - The data set contains 29 columns.
 - You can get the top **n** unversities of any **country** based on specific **ranking column**.
--  
+
 ## Installations are requirements :
 - You need to install npm module and all the dependencies present in the package.json.
   ```
