@@ -18,9 +18,9 @@ if (options.imp) {
   dataImportFunction(path);
 }
 if (options.query) {
-  const columnName = options.query[0];
-  const limit = parseInt(options.query[1]);
-  const country = options.query[2];
+  let columnName = options.query[0];
+  let limit = parseInt(options.query[1]);
+  let country = options.query[2];
   query(columnName, limit, country);
 }
 if (!process.argv.slice(2).length) {
