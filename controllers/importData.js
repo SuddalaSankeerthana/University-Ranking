@@ -6,15 +6,22 @@ const dataImportFunction = (filePath) => {
     csvtojson()
       .fromFile(filePath)
       .then((source) => {
-        UniversityRanking.insertMany(source).then(() => {
-          console.log("Document created successfully!");
-          mongoose.connection.close();
-        });
+        UniversityRanking.insertMany(source)
+          .then(() => {
+            console.log("Document created successfully!");
+          })
+          .catch((e) => {
+            console.error(`Error while inserting data : ${e.message}`);
+          }).finally(() => {
+            // Closing connection
+            mongoose.connection.close();
+          });
         console.log("Connection closed successfully");
       })
       .catch((e) => {
-        console.log(e.message);
-      });
+        console.error(`Error while converting to csv :${e.message}`);
+        mongoose.connection.close();
+      })
   });
 };
 module.exports = dataImportFunction;
